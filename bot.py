@@ -32,7 +32,11 @@ def chatinfo(bot, update):
 
 def note(bot, update):
     r = requests.get('http://www.billwurtz.com/notebook.html')
-    print(r.text)
+    # print(r.text)
+
+    # instantiate the parser and fed it some HTML
+    parser = NoteParser()
+    parser.feed(r.text)
 
 
 def error(bot, update, error):
