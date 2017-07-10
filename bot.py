@@ -63,12 +63,12 @@ def note(bot, update):
 
     class NoteReader(HTMLParser):
         def handle_data(self, data):
-            print(data)
-
             nonBreakSpace = u'\xa0'
 
             if (data.replace(" ", "").replace(nonBreakSpace, "") != '' and
                     data.replace(" ", "").replace(nonBreakSpace, "") != '\n'):
+
+                print(data[0].name(c))
                 bot.sendMessage(update.message.chat_id, text=data)
 
     parser = NoteReader()
