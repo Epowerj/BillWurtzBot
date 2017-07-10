@@ -59,6 +59,8 @@ def note(bot, update):
     r = requests.get('http://www.billwurtz.com/' +
         notelist[random.randint(0, len(notelist)-1)])
 
+    print(r.url)
+
     class NoteReader(HTMLParser):
         def handle_data(self, data):
             print(data)
