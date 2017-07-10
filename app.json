@@ -1,0 +1,6 @@
+{
+  "name": "BillWurtzBot",
+  "description": "A telegram that spits out bill wurtz notes",
+  "repository": "https://github.com/Epowerj/BillWurtzBot",
+  "keywords": ["python", "telegram", "chat bot" ]
+}
