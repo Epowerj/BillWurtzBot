@@ -1,9 +1,9 @@
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 from key import apikey
-from noteparser import NoteParser
 from urllib.parse import urlparse
 import os, logging, datetime, time, requests, random
+from html.parser import HTMLParser
 
 notelist = []
 
@@ -90,3 +90,11 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# create a subclass and override the handler methods
+class NoteParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        global notelist
+
+        if (tag == "a"):
+            notelist.append(attrs['href'])
