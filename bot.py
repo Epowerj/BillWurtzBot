@@ -71,7 +71,7 @@ def note(bot, update):
 
                 #print(unicodedata.name(data[0]))
                 for c in data:
-                    print(unicodedata.name(c))
+                    print(unicodedata.category(c))
                 bot.sendMessage(update.message.chat_id, text=data)
 
     parser = NoteReader()
