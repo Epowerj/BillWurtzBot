@@ -65,14 +65,14 @@ def note(bot, update):
     class NoteReader(HTMLParser):
         def handle_data(self, data):
 
-            isempty = true
+            isempty = True
 
             for c in data:
                 if (unicodedata.catgory(c)[0] == 'L' or
                     unicodedata.catgory(c)[0] == 'N' or
                     unicodedata.catgory(c)[0] == 'P' or
                     unicodedata.catgory(c)[0] == 'S'):
-                    isempty = false
+                    isempty = False
 
             if (not isempty):
 
