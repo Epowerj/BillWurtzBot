@@ -101,7 +101,7 @@ def parse(bot, update):
 def main():
     updateNoteList()
 
-    job = job_queue.run_once(updateNoteList(), 30)
+    job = updater.job_queue.run_repeating(updateNoteList(), 30)
 
     TOKEN = apikey
     PORT = int(os.environ.get('PORT', '5000'))
