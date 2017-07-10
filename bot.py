@@ -68,10 +68,10 @@ def note(bot, update):
             isempty = True
 
             for c in data:
-                if (unicodedata.catgory(c)[0] == 'L' or
-                    unicodedata.catgory(c)[0] == 'N' or
-                    unicodedata.catgory(c)[0] == 'P' or
-                    unicodedata.catgory(c)[0] == 'S'):
+                if (unicodedata.category(c)[0] == 'L' or
+                    unicodedata.category(c)[0] == 'N' or
+                    unicodedata.category(c)[0] == 'P' or
+                    unicodedata.category(c)[0] == 'S'):
                     isempty = False
 
             if (not isempty):
