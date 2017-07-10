@@ -3,13 +3,27 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Callb
 from key import apikey
 from noteparser import NoteParser
 from urllib.parse import urlparse
-import os, logging, datetime, time, requests
+import os, logging, datetime, time, requests, random
+
+notelist = []
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
+
+def updateNoteList():
+    global notelist
+    notelist = []
+
+    r = requests.get('http://www.billwurtz.com/notebook.html')
+
+    parser = NoteParser()
+    parser.feed(r.text)
+
+    print(notelist)
+
 
 def start(bot, update):
     bot.sendMessage(update.message.chat_id, text="Just do /note my dude")
@@ -32,12 +46,8 @@ def chatinfo(bot, update):
 
 
 def note(bot, update):
-    r = requests.get('http://www.billwurtz.com/notebook.html')
-    # print(r.text)
-
-    # instantiate the parser and fed it some HTML
     parser = NoteParser()
-    parser.feed(r.text)
+    parser.feed( notelist[random.randint(0, len(notelist)-1] )
 
 
 def error(bot, update, error):
@@ -52,6 +62,7 @@ def parse(bot, update):
 
 
 def main():
+    updateNoteList()
 
     TOKEN = apikey
     PORT = int(os.environ.get('PORT', '5000'))
