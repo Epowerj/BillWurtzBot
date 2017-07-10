@@ -66,9 +66,9 @@ def note(bot, update):
             nonBreakSpace = u'\xa0'
 
             if (data.replace(" ", "").replace(nonBreakSpace, "") != '' and
-                    data.replace(" ", "").replace(nonBreakSpace, "") != '\n'):
+                    data.replace(" ", "").rep BreakSpace, "") != '\n'):
 
-                #print(data[0].name(c))
+                print(unicodedata.name(data[0]))
                 bot.sendMessage(update.message.chat_id, text=data)
 
     parser = NoteReader()
