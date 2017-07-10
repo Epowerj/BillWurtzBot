@@ -55,10 +55,22 @@ def chatinfo(bot, update):
 
 def note(bot, update):
     global notelist
-    print(notelist)
 
-    #parser = NoteParser()
-    #parser.feed( notelist[random.randint(0, len(notelist)-1)] )
+    r = requests.get('http://www.billwurtz.com/' +
+        notelist[random.randint(0, len(notelist)-1)])
+
+    class NoteReader(HTMLParser):
+        def handle_starttag(self, tag, attrs):
+            print "Encountered a start tag:", tag
+
+        def handle_endtag(self, tag):
+            print "Encountered an end tag :", tag
+
+        def handle_data(self, data):
+            print "Encountered some data  :", data
+
+    parser = NoteReader()
+    parser.feed(r.text)
 
 
 def error(bot, update, error):
