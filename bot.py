@@ -4,6 +4,7 @@ from key import apikey
 from urllib.parse import urlparse
 import os, logging, datetime, time, requests, random
 from html.parser import HTMLParser
+import unicodedata
 
 notelist = []
 
@@ -68,7 +69,9 @@ def note(bot, update):
             if (data.replace(" ", "").replace(nonBreakSpace, "") != '' and
                     data.replace(" ", "").replace(nonBreakSpace, "") != '\n'):
 
-                print(unicodedata.name(data[0]))
+                #print(unicodedata.name(data[0]))
+                for c in data:
+                    print(unicodedata.name(c))
                 bot.sendMessage(update.message.chat_id, text=data)
 
     parser = NoteReader()
