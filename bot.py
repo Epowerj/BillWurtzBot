@@ -68,7 +68,7 @@ def note(bot, update):
             if (data.replace(" ", "").replace(nonBreakSpace, "") != '' and
                     data.replace(" ", "").replace(nonBreakSpace, "") != '\n'):
 
-                print(data[0].name(c))
+                #print(data[0].name(c))
                 bot.sendMessage(update.message.chat_id, text=data)
 
     parser = NoteReader()
