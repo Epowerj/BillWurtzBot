@@ -14,7 +14,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-def updateNoteList():
+def updateNoteList(bot, job):
     print("Updating notelist")
 
     global notelist
