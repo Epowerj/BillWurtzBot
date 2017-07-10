@@ -25,7 +25,7 @@ def updateNoteList():
             global notelist
 
             if (tag == "a"):
-                notelist.append(attrs['href'])
+                notelist.append(attrs[0][1])
 
     parser = NoteParser()
     parser.feed(r.text)
