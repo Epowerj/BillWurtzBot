@@ -99,7 +99,7 @@ def parse(bot, update):
 
 
 def main():
-    updateNoteList()
+    #updateNoteList()
 
     TOKEN = apikey
     PORT = int(os.environ.get('PORT', '5000'))
@@ -118,7 +118,12 @@ def main():
     dp.add_handler(CommandHandler("chatinfo", chatinfo))
     dp.add_handler(CommandHandler("note", note))
 
-    job = updater.job_queue.run_repeating(updateNoteList(), 30)
+    jobQueue = updater.job_queue
+    jobQueue.run_repeating(callback=updateNoteList,
+    #interval=datetime.timedelta(hours=24),
+    interval=30,
+    first=datetime.datetime.now(),
+    name='RepeatingJob')
 
     dp.add_handler(MessageHandler([Filters.text], parse))
 
