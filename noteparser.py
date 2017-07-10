@@ -4,7 +4,7 @@ from html.parser import HTMLParser
 class NoteParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         print ("Encountered a start tag:", tag)
-        if (tag "a"):
+        if (tag == "a"):
             print(attrs)
 
     def handle_endtag(self, tag):
