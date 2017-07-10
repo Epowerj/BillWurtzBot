@@ -61,7 +61,9 @@ def note(bot, update):
 
     class NoteReader(HTMLParser):
         def handle_data(self, data):
-            bot.sendMessage(update.message.chat_id, text=data)
+            print data
+            if (data != ''):
+                bot.sendMessage(update.message.chat_id, text=data)
 
     parser = NoteReader()
     parser.feed(r.text)
