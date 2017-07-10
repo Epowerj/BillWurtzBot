@@ -19,6 +19,14 @@ def updateNoteList():
 
     r = requests.get('http://www.billwurtz.com/notebook.html')
 
+    # create a subclass and override the handler methods
+    class NoteParser(HTMLParser):
+        def handle_starttag(self, tag, attrs):
+            global notelist
+
+            if (tag == "a"):
+                notelist.append(attrs['href'])
+
     parser = NoteParser()
     parser.feed(r.text)
 
@@ -90,11 +98,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# create a subclass and override the handler methods
-class NoteParser(HTMLParser):
-    def handle_starttag(self, tag, attrs):
-        global notelist
-
-        if (tag == "a"):
-            notelist.append(attrs['href'])
