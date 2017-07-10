@@ -1,5 +1,5 @@
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, Job
 from key import apikey
 from urllib.parse import urlparse
 import os, logging, datetime, time, requests, random
@@ -15,6 +15,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 def updateNoteList():
+    print("Updating notelist")
+
     global notelist
     notelist = []
 
@@ -98,6 +100,8 @@ def parse(bot, update):
 
 def main():
     updateNoteList()
+
+    job = job_queue.run_once(updateNoteList(), 30)
 
     TOKEN = apikey
     PORT = int(os.environ.get('PORT', '5000'))
