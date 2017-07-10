@@ -15,7 +15,7 @@ def start(bot, update):
 
 
 def help(bot, update):
-    bot.sendMessage(update.message.chat_id, text='Just do /note my dude /nbillwurtz.com')
+    bot.sendMessage(update.message.chat_id, text='Just do /note my dude /n billwurtz.com')
 
 def ping(bot, update):
     bot.sendMessage(update.message.chat_id, text='Pong')
