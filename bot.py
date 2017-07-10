@@ -31,7 +31,8 @@ def chatinfo(bot, update):
 
 
 def note(bot, update):
-
+    r = requests.get('http://www.billwurtz.com/notebook.html')
+    print(r.text)
 
 
 def error(bot, update, error):
