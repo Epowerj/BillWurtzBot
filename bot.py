@@ -120,8 +120,7 @@ def main():
 
     jobQueue = updater.job_queue
     jobQueue.run_repeating(callback=updateNoteList,
-    #interval=datetime.timedelta(hours=24),
-    interval=30,
+    interval=datetime.timedelta(hours=1),
     first=datetime.datetime.now())
 
     dp.add_handler(MessageHandler([Filters.text], parse))
