@@ -11,11 +11,11 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 def start(bot, update):
-    bot.sendMessage(update.message.chat_id, text="Hey!")
+    bot.sendMessage(update.message.chat_id, text="Just do /note my dude")
 
 
 def help(bot, update):
-    bot.sendMessage(update.message.chat_id, text='Just ask @Epowerj. This bot currently uses a dev build.')
+    bot.sendMessage(update.message.chat_id, text='Just do /note my dude /nbillwurtz.com')
 
 def ping(bot, update):
     bot.sendMessage(update.message.chat_id, text='Pong')
@@ -42,12 +42,6 @@ def parse(bot, update):
 
 
 def main():
-    global char_info
-    global next_action
-
-    load_info()
-    print(char_info)
-    print(next_action)
 
     TOKEN = apikey
     PORT = int(os.environ.get('PORT', '5000'))
