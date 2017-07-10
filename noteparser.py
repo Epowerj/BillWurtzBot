@@ -1,5 +1,4 @@
 from html.parser import HTMLParser
-from bot import notelist
 
 # create a subclass and override the handler methods
 class NoteParser(HTMLParser):
