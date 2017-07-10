@@ -30,7 +30,7 @@ def updateNoteList():
     parser = NoteParser()
     parser.feed(r.text)
 
-    print(notelist)
+    #print(notelist)
 
 
 def start(bot, update):
@@ -60,14 +60,8 @@ def note(bot, update):
         notelist[random.randint(0, len(notelist)-1)])
 
     class NoteReader(HTMLParser):
-        def handle_starttag(self, tag, attrs):
-            print("Encountered a start tag:", tag)
-
-        def handle_endtag(self, tag):
-            print("Encountered an end tag :", tag)
-
         def handle_data(self, data):
-            print("Encountered some data  :", data)
+            bot.sendMessage(update.message.chat_id, text=data)
 
     parser = NoteReader()
     parser.feed(r.text)
