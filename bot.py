@@ -1,6 +1,7 @@
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 from key import apikey
+from noteparser import NodeParser
 from urllib.parse import urlparse
 import os, logging, datetime, time, requests
 
