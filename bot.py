@@ -54,8 +54,11 @@ def chatinfo(bot, update):
 
 
 def note(bot, update):
-    parser = NoteParser()
-    parser.feed( notelist[random.randint(0, len(notelist)-1)] )
+    global notelist
+    print(notelist)
+
+    #parser = NoteParser()
+    #parser.feed( notelist[random.randint(0, len(notelist)-1)] )
 
 
 def error(bot, update, error):
