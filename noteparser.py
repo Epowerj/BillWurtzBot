@@ -1,4 +1,4 @@
-from html.parser import HTMLParser
+from HTMLParser import HTMLParser
 
 # create a subclass and override the handler methods
 class NoteParser(HTMLParser):
