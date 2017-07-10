@@ -64,14 +64,21 @@ def note(bot, update):
 
     class NoteReader(HTMLParser):
         def handle_data(self, data):
-            nonBreakSpace = u'\xa0'
 
-            if (data.replace(" ", "").replace(nonBreakSpace, "") != '' and
-                    data.replace(" ", "").replace(nonBreakSpace, "") != '\n'):
+            isempty = true
+
+            for c in data:
+                if (unicodedata.catgory(c)[0] == 'L' or
+                    unicodedata.catgory(c)[0] == 'N' or
+                    unicodedata.catgory(c)[0] == 'P' or
+                    unicodedata.catgory(c)[0] == 'S'):
+                    isempty = false
+
+            if (not isempty):
 
                 #print(unicodedata.name(data[0]))
-                for c in data:
-                    print(unicodedata.category(c))
+                #for c in data:
+                    #print(unicodedata.category(c))
                 bot.sendMessage(update.message.chat_id, text=data)
 
     parser = NoteReader()
