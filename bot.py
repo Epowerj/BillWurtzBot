@@ -66,7 +66,7 @@ def note(bot, update):
             nonBreakSpace = u'\xa0'
 
             if (data.replace(" ", "").replace(nonBreakSpace, "") != '' and
-                    data.replace(" ", "").rep BreakSpace, "") != '\n'):
+                    data.replace(" ", "").replace(nonBreakSpace, "") != '\n'):
 
                 print(unicodedata.name(data[0]))
                 bot.sendMessage(update.message.chat_id, text=data)
