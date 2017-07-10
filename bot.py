@@ -2,7 +2,7 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 from key import apikey
 from urllib.parse import urlparse
-import os, logging, datetime, time
+import os, logging, datetime, time, requests
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -28,6 +28,10 @@ def time(bot, update):
 def chatinfo(bot, update):
     bot.sendMessage(update.message.chat_id, text="chat_id is "+str(update.message.chat_id))
     bot.sendMessage(update.message.chat_id, text="user id is "+str(update.message.from_user.id))
+
+
+def note(bot, update):
+
 
 
 def error(bot, update, error):
@@ -58,6 +62,7 @@ def main():
     dp.add_handler(CommandHandler("ping", ping))
     dp.add_handler(CommandHandler("time", time))
     dp.add_handler(CommandHandler("chatinfo", chatinfo))
+    dp.add_handler(CommandHandler("note", note))
 
     dp.add_handler(MessageHandler([Filters.text], parse))
 
